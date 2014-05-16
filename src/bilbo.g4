@@ -1,30 +1,20 @@
 grammar bilbo;
 
 header
-    : Visibility? 'static' type name '(' type trree ')' '{' body '}'
-    ;
-
-Visibility
-    : ('public' | 'private' | 'protected')
+    : Visibility? 'static' type nimi '(' type trree ')' '{' body '}'
     ;
 
 body
-    :    (line  ';')+
+    :    (line  ';')*
     ;
 
 line
-    :   head '~>' java
+    :   head '~>' Java
     ;
 
-java
-    :   Simplejava
-    |   '{' (Simplejava ';')+ '}'
+Java
+    :   '<java>'
     ;
-
-Simplejava
-    :   (.)*
-    ;
-
 
 head
     :   type '(' args? ')'
@@ -40,50 +30,57 @@ arg
     ;
 
 var
-    :   Name
+    :   NimiTest
     ;
 
 match
     :   Number
     |   String
     ;
-Number
-    :   [-+]?[0-9]*'.'?[0-9]+
+
+nimi
+    :   NimiTest
     ;
 
-String
-    :   '"' [a-zA-Z0-9]* '"'
-    ;
-
-name
-    :   Name
-    ;
 
 type
     :   TypeName
     ;
 
 trree
-    :   Name
+    :   NimiTest
     ;
 
+Visibility
+    : ('public' | 'private' | 'protected')
+    ;
 
+trree
+    :   Name
+    ;
 
 TypeName
     :   [A-Z][a-z0-9_]*
     ;
 
 
+NimiTest
+    :   [A-z][a-z0-9_]*
+    ;
 
-Name
-    :[a-z][a-z0-9_]*
+Number
+    :   [-+]?[0-9]*'.'?[0-9]+
+    ;
+
+String
+    :   '"' [a-zA-Z0-9+-/*!"#%&/()=]* '"'
+    ;
+Simplejava
+    :   [a-b]
     ;
 
 
 Whitespace
     :   [ \t\r\n]+ -> skip
     ;
-
-
-
 
