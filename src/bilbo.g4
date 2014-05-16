@@ -1,11 +1,11 @@
-grammar Bilbo;
+grammar bilbo;
 
 header
-    : Visibility 'static' type name '(' type tree ')' '{' body '}'
+    : Visibility? 'static' type name '(' type trree ')' '{' body '}'
     ;
 
 Visibility
-    : ('public' | 'private' | 'protected')?
+    : ('public' | 'private' | 'protected')
     ;
 
 body
@@ -59,23 +59,31 @@ name
     :   Name
     ;
 
-Name
-    :   [a-z][a-z0-9_]*
-    ;
-
 type
     :   TypeName
     ;
 
+trree
+    :   Name
+    ;
+
+
+
 TypeName
     :   [A-Z][a-z0-9_]*
     ;
+
+
+
+Name
+    :[a-z][a-z0-9_]*
+    ;
+
 
 Whitespace
     :   [ \t\r\n]+ -> skip
     ;
 
 
-tree
-    :   Name
-    ;
+
+
