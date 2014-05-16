@@ -18,6 +18,7 @@ Java
 
 head
     :   type '(' args? ')'
+    |   Bottom
     ;
 
 args
@@ -57,6 +58,10 @@ Visibility
 
 TypeName
     :   [A-Z][a-z0-9_]*
+    ;
+
+Bottom
+    :   [_]
     ;
 
 NimiTest
