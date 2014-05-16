@@ -13,7 +13,7 @@ line
     ;
 
 Java
-    :   [a]
+    :   '<java>'
     ;
 
 head
@@ -67,7 +67,7 @@ Number
     ;
 
 String
-    :   '"' [a-zA-Z0-9]* '"'
+    :   '"' [a-zA-Z0-9+-/*!"#%&/()=]* '"'
     ;
 Simplejava
     :   [a-b]
