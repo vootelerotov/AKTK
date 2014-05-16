@@ -1,0 +1,6 @@
+static Int a(Parsetree tree){
+    Leht(child) ~> <java>;
+    Tipp(l,"+",p) ~> <java>;
+    Juur() ~> <java>;
+    _ ~> <java>;
+}
