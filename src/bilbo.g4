@@ -18,6 +18,7 @@ Java
 
 head
     :   type '(' args? ')'
+    |   Bottom
     ;
 
 args
@@ -55,19 +56,17 @@ Visibility
     : ('public' | 'private' | 'protected')
     ;
 
-trree
-    :   Name
-    ;
-
 TypeName
     :   [A-Z][a-z0-9_]*
     ;
 
+Bottom
+    :   [_]
+    ;
 
 NimiTest
     :   [A-z][a-z0-9_]*
     ;
-
 Number
     :   [-+]?[0-9]*'.'?[0-9]+
     ;
@@ -79,8 +78,6 @@ Simplejava
     :   [a-b]
     ;
 
-
 Whitespace
     :   [ \t\r\n]+ -> skip
     ;
-
