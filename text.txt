@@ -1,6 +1,6 @@
 static Int a(Parsetree tree){
-    Leht(child) ~> <java>;
-    Tipp(l,"+",p) ~> <java>;
-    Juur() ~> <java>;
-    _ ~> <java>;
+    Leht(child) ~> [a;];
+    Tipp(l,"+",p) ~> [ab;];
+    Juur() ~> [bbbaaa];
+    _ ~> [a; asdsdb;];
 }
