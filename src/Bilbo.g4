@@ -77,10 +77,6 @@ String_match
     :   '"' [a-zA-Z0-9+-/*!"#%&/()=]* '"'
     ;
 
-Somethingthatdontwork
-    :   .*?
-    ;
-
 Kommentaar
     :   '/*' .*? '*/' -> skip
     ;
