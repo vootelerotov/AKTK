@@ -9,12 +9,13 @@ body
     ;
 
 line
-    :   head '~>' Java
+    :   head '~>' Javva
     ;
 
-Java
-    :   '<java>'
+Javva
+    :   '[' .*? ']'
     ;
+
 
 head
     :   type '(' args? ')'
@@ -36,7 +37,7 @@ var
 
 match
     :   Number
-    |   String
+    |   String_match
     ;
 
 nimi
@@ -51,6 +52,7 @@ type
 trree
     :   NimiTest
     ;
+
 
 Visibility
     : ('public' | 'private' | 'protected')
@@ -71,11 +73,12 @@ Number
     :   [-+]?[0-9]*'.'?[0-9]+
     ;
 
-String
+String_match
     :   '"' [a-zA-Z0-9+-/*!"#%&/()=]* '"'
     ;
-Simplejava
-    :   [a-b]
+
+Kommentaar
+    :   '/*' .*? '*/' -> skip
     ;
 
 Whitespace
