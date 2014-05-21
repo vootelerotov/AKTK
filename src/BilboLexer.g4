@@ -4,6 +4,23 @@ lexer grammar BilboLexer;
 static int i =0;
 }
 
+FinalJavaBlock
+    : EOF
+    ;
+
+JavaBlockOutSide
+    : '@Bilbo' -> pushMode(BILBO)
+    ;
+
+
+All
+    : . -> more
+    ;
+
+
+
+mode BILBO;
+
 
 Static
     : 'static'
@@ -22,7 +39,7 @@ LBrace
     ;
 
 RBrace
-    : '}'
+    : '}' -> popMode
     ;
 
 Coma
