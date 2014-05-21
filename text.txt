@@ -1,6 +1,6 @@
 static Int a(Parsetree tree){
-    Leht(child) ~> <java>;
-    Tipp(l,"+",p) ~> <java>;
-    Juur() ~> <java>;
-    _ ~> <java>;
+    Leht(child) ~> {if (3 < 2) {return 3;}};
+    Tipp(l,"+",p) ~> {return 3;};
+    Juur() ~> {while (true) { if (3 < 5) {return 1;} else {return 2}}};
+    _ ~> {throw new Exception("VIGA")};
 }
