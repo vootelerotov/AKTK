@@ -1,0 +1,20 @@
+public class Foo{
+
+    static boolean V = True;
+
+    static Int a(Bar b){
+        return 4;
+    };
+
+    @Bilbo
+    static Int a(Parsetree tree){
+        Leht(child) ~> {if (3 < 2) {return 3;}};
+        Tipp(l,"+",p) ~> {return 3;};
+        Juur() ~> {while (true) { if (3 < 5) {return 1;} else {return 2}}};
+        _ ~> {throw new Exception("VIGA")};
+    }
+
+
+    int a = a(new ParseTree("This is test");
+
+}
