@@ -8,8 +8,8 @@ source
     ;
 
 outsideJava
-    : JavaBlockOutSide
-    | FinalJavaBlock
+    : JavaBlockOutSide # nonFinalOutsideBlock
+    | FinalJavaBlock   # finalOutsideBlock
     ;
 
 bilbo
@@ -33,8 +33,8 @@ java
     ;
 
 head
-    :   type LParen args? RParen
-    |   Bottom
+    :   type LParen args? RParen # HeadWithType
+    |   Bottom #Bottom
     ;
 
 args
@@ -42,8 +42,8 @@ args
     ;
 
 arg
-    :   var
-    |   match
+    :   var   #varArg
+    |   match #varMatch
     ;
 
 var
