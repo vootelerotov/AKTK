@@ -7,7 +7,7 @@ public class Var extends Arg {
 
     private String name;
 
-    public String getName(){
+    public String getValue(){
         return name;
     }
 
