@@ -13,9 +13,11 @@ public interface Bilbo extends Source {
 
     public String getVisibility();
 
+    public Boolean hasVisibility();
+
     public String getName();
 
-    public Boolean getStatic();
+    public Boolean isStatic();
 
     public List<InstanceOfBlock> getInstancesOfBlocks();
 
