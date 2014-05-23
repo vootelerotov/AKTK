@@ -9,9 +9,11 @@ import java.util.List;
  */
 public interface InstanceOfBlock {
 
-    public String getInstanceType();
 
-    public List<Arg> getArgs();
+
+    public String getInstanceType(); // null if bottom, change?
+
+    public List<Arg> getArgs(); // empty list if non present
 
     public String getJava();
 }
