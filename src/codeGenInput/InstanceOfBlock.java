@@ -11,7 +11,7 @@ public interface InstanceOfBlock {
 
 
 
-    public String getInstanceType(); // null if bottom, change?
+    public String getInstanceType(); // null if bottom
 
     public List<Arg> getArgs(); // empty list if non present
 

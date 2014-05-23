@@ -9,5 +9,5 @@ public interface Input {
 
     public String getName();
 
-
+    public String toString();
 }

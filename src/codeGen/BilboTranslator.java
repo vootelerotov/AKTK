@@ -9,31 +9,40 @@ import java.util.List;
  * Created by Innar Hallik on 23.05.2014.
  */
 public class BilboTranslator {
-    public String TranslateBilbo(Bilbo bilboBlock){
+    public String TranslateBilbo(Bilbo bilboBlock) throws notSupportedMethodException {
         String bilbo = null;
         if (bilboBlock.hasVisibility() != null){
-            bilbo += new String(bilboBlock.getVisibility()+' ');
+            bilbo += bilboBlock.getVisibility()+' ';
         }
         if (bilboBlock.isStatic()){
             bilbo += "static ";
         }
-        bilbo += bilboBlock.getMethodType();
+        else{
+            throw new notSupportedMethodException("Non static methods not yet supported for Bilbo");
+        }
+        bilbo += bilboBlock.getMethodType() + ' ';
         bilbo += bilboBlock.getName();
-        bilbo += new String("(" + bilboBlock.getInput() +"){");
-
-        bilbo += TeanslateBlocks(bilboBlock.getInstancesOfBlocks());
-
+        bilbo += "(" + bilboBlock.getInput() + "){" + '\n';
+        bilbo += TeanslateBlocks(bilboBlock.getInstancesOfBlocks(),bilboBlock.getInput().getName());
         bilbo += '}';
         return bilbo;
     }
 
-    private String TeanslateBlocks(List<InstanceOfBlock> Blocks) {
+    private String TeanslateBlocks(List<InstanceOfBlock> Blocks,String treeName) {
         String oneRing = null;
         for(InstanceOfBlock block: Blocks){
             //bilbo to instanceOf style
+            String statment= null;
+            statment += "if (" + treeName +" instanceof "+block.getInstanceType()+ "){" +'\n';
+
+            statment += "}";
         }
 
         return oneRing;
     }
 
+    private class notSupportedMethodException extends Throwable {
+        public notSupportedMethodException(String s) {
+        }
+    }
 }
