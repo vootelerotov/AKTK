@@ -2,7 +2,7 @@
  * Created by vootele on 5/22/14.
  */
 
-import AST.BilboAST;
+import ast.BilboAST;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -31,6 +31,7 @@ public class Main {
     public static void main (String[] args) throws IOException {
         String input = new String(Files.readAllBytes(Paths.get(args[0])));
         ParseTree tree = createParseTree(input);
-        evaluateWithVisitor(tree);
+        BilboAST ast = evaluateWithVisitor(tree);
+        System.out.println(ast);
     }
 }
