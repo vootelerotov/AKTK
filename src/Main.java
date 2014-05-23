@@ -3,6 +3,7 @@
  */
 
 import ast.BilboAST;
+import codeGenInput.Source;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -10,6 +11,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class Main {
 
@@ -28,10 +30,11 @@ public class Main {
         return tree.accept(visitor);
     }
 
-    public static void main (String[] args) throws IOException {
+    public static void main (String[] args) throws Exception {
         String input = new String(Files.readAllBytes(Paths.get(args[0])));
         ParseTree tree = createParseTree(input);
         BilboAST ast = evaluateWithVisitor(tree);
-        System.out.println(ast);
+        List<Source> list = ASTParser.parseProgram(ast);
+
     }
 }

@@ -1,4 +1,6 @@
-import AST.*;
+
+import ast.*;
+import codeGenInput.Input;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,7 +23,7 @@ public class BilboVisitor extends BilboParserBaseVisitor<BilboAST>{
 
     @Override
     public BilboAST visitNonFinalOutsideBlock(@NotNull BilboParser.NonFinalOutsideBlockContext ctx) {
-        return new AST.OutsideJava(ctx.JavaBlockOutSide().getText().substring(
+        return new ast.OutsideJava(ctx.JavaBlockOutSide().getText().substring(
                 0,ctx.JavaBlockOutSide().getText().length()-BilboConstants.ANNOTATION.length()));
     }
 
@@ -41,7 +43,7 @@ public class BilboVisitor extends BilboParserBaseVisitor<BilboAST>{
         }
 
         return new BilboBlock(visibility,ctx.Static().getText().equals("static"),ctx.type(0).TypeName().getText(),ctx.nimi(0).Name().getText(),
-                new Input(ctx.type(1).TypeName().getText(),ctx.nimi(1).Name().getText()), (Body) visit(ctx.body()) );
+                new ast.Input(ctx.type(1).TypeName().getText(),ctx.nimi(1).Name().getText()), (Body) visit(ctx.body()) );
     }
 
     @Override

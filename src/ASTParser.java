@@ -47,10 +47,16 @@ public class ASTParser {
 
     private static InstanceOfBlock parseLine(Line l) throws Exception {
         List<codeGenInput.Arg> list = new ArrayList<codeGenInput.Arg>();
-        for (Arg arg : l.getHead().getArgs().getList()){
-            list.add(parseArg(arg));
+        if (l != null && l.getHead() !=null && l.getHead().getArgs() != null && l.getHead().getArgs().getList() != null){
+            for (Arg arg : l.getHead().getArgs().getList()){
+                list.add(parseArg(arg));
+            }
         }
-        return new InstanceOfBlockImpl(l.getHead().getType(),list,l.getJavaCode());
+        String type = null;
+        if (l.getHead() != null && l.getHead().getType() != null){
+            type = l.getHead().getType();
+        }
+        return new InstanceOfBlockImpl(type,list,l.getJavaCode());
     }
 
     private static codeGenInput.Arg parseArg(Arg arg) throws Exception {
