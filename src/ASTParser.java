@@ -22,7 +22,7 @@ public class ASTParser {
         if (ast instanceof Program){
             Program b =(Program) ast;
             for (BilboAST s :b.getList()){
-                parseBilboOrOutsideJava(s);
+                src.add(parseBilboOrOutsideJava(s));
             }
         }
         return src;

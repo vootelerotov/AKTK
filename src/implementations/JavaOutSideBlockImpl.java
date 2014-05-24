@@ -11,7 +11,7 @@ public class JavaOutSideBlockImpl implements JavaOutSideBlock {
 
     @Override
     public String getValue() {
-        return null;
+        return val;
     }
 
     public JavaOutSideBlockImpl(String val){

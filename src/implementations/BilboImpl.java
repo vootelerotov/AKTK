@@ -40,12 +40,17 @@ public class BilboImpl implements Bilbo {
     }
 
     @Override
+    public Boolean hasVisibility() {
+        return visibility != null;
+    }
+
+    @Override
     public String getName() {
         return name;
     }
 
     @Override
-    public Boolean getStatic() {
+    public Boolean isStatic() {
         return isStatic;
     }
 

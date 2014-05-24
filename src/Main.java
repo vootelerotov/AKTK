@@ -3,6 +3,8 @@
  */
 
 import ast.BilboAST;
+import codeGen.CodeGenerator;
+import codeGen.NotSupportedMethodException;
 import codeGenInput.Source;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -30,11 +32,16 @@ public class Main {
         return tree.accept(visitor);
     }
 
-    public static void main (String[] args) throws Exception {
+    public static void main (String[] args) throws Exception, NotSupportedMethodException {
         String input = new String(Files.readAllBytes(Paths.get(args[0])));
         ParseTree tree = createParseTree(input);
         BilboAST ast = evaluateWithVisitor(tree);
+        System.out.println(ast);
         List<Source> list = ASTParser.parseProgram(ast);
+        for (Source s : list){
+            System.out.println(s);
+        }
+        CodeGenerator.generateCode(list,"testBilbo.java");
 
     }
 }

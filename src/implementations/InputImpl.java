@@ -10,12 +10,12 @@ public class InputImpl implements codeGenInput.Input {
 
     @Override
     public String getType() {
-        return null;
+        return type;
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     public InputImpl(String type, String name){
