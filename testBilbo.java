@@ -20,22 +20,13 @@ public class Test {
 
     private static class Bilbo0 {
 private static ParseTree tree; 
-private static Integer method0( ) {
-            return Integer.parseInt(tree.getText());
-        }
+private static Integer method0( ) {return Integer.parseInt(tree.getText()); }
 private static Integer method1(  ParseTree l, ParseTree r ) {return evaluate(l)*evaluate(r);}
 private static Integer method2(  ParseTree l, ParseTree r ) {return evaluate(l)/evaluate(r);}
 private static Integer method3(  ParseTree l, ParseTree r ) {return evaluate(l)+evaluate(r);}
 private static Integer method4(  ParseTree l, ParseTree r ) {return evaluate(l)+evaluate(r);}
-private static Integer method5( ) {
-            if (tree.getChildCount() == 1){
-                return evaluate(tree.getChild(0));
-            }
-            else{
-            throw new UnsupportedOperationException
-                    ("Selle tiputüübi väärtustamine ei ole praegu toetatud");
-            }
-        }
+private static Integer method5(  ParseTree child ) {return evaluate(child);}
+private static Integer method6( ) { throw new UnsupportedOperationException("Selle tiputüübi väärtustamine ei ole praegu toetatud");}
  static Integer evaluate ( ParseTree tree){ 
 Bilbo0.tree=tree; 
 if ( tree instanceof AKTKParser.ArvuliteraalRContext ){
@@ -48,8 +39,10 @@ if ( tree instanceof AKTKParser.LiitmineLahutamineContext && tree.getChild(1).ge
 return method3(  tree.getChild(0), tree.getChild(2) );}
 if ( tree instanceof AKTKParser.LiitmineLahutamineContext && tree.getChild(1).getText().equals("+") ){
 return method4(  tree.getChild(0), tree.getChild(2) );}
+if ( tree instanceof ParseTree ){
+return method5(  tree.getChild(0) );}
 {
-return method5( );}
+return method6( );}
 }
  } 
 static Integer evaluate ( ParseTree tree ) {

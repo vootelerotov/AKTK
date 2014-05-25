@@ -21,29 +21,19 @@ public class Test {
     @Bilbo
     static Integer evaluate(ParseTree tree) {
 
-
-        AKTKParser.ArvuliteraalRContext() ~> {
-            return Integer.parseInt(tree.getText());
-        };
-
-
+        AKTKParser.ArvuliteraalRContext() ~> {return Integer.parseInt(tree.getText()); };
 
         AKTKParser.KorrutamineJagamineContext(l,"*",r) ~> {return evaluate(l)*evaluate(r);};
+
         AKTKParser.KorrutamineJagamineContext(l,"/",r) ~> {return evaluate(l)/evaluate(r);};
+
         AKTKParser.LiitmineLahutamineContext(l,"+",r) ~> {return evaluate(l)+evaluate(r);};
+
         AKTKParser.LiitmineLahutamineContext(l,"+",r) ~> {return evaluate(l)+evaluate(r);};
 
+        ParseTree(child) ~> {return evaluate(child);};
 
-
-        _ ~> {
-            if (tree.getChildCount() == 1){
-                return evaluate(tree.getChild(0));
-            }
-            else{
-            throw new UnsupportedOperationException
-                    ("Selle tiputüübi väärtustamine ei ole praegu toetatud");
-            }
-        };
+        _ ~> { throw new UnsupportedOperationException("Selle tiputüübi väärtustamine ei ole praegu toetatud");};
     }
 
     public static void main(String[] args){
