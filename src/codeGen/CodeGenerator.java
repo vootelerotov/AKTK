@@ -27,12 +27,6 @@ public class CodeGenerator {
             }
 
         }
-        // for each element in source
-        //      if not outsidejava
-        //          String bilbo = TranslateBilbo(element)
-        //          new_code add bilbo
-        //      else
-        //          new_code add element
 
         Writer writer = null;
 

@@ -4,8 +4,6 @@ import codeGenInput.Arg;
 import codeGenInput.Bilbo;
 import codeGenInput.InstanceOfBlock;
 
-import java.util.List;
-
 /**
  * Created by Innar Hallik on 23.05.2014.
  */
@@ -31,9 +29,6 @@ public class BilboTranslator {
         generateMainMethod();
         closeInnerClass();
         generateHookToStaticClass();
-
-
-
     }
 
     private void generateMainMethod() throws NotSupportedMethodException {
@@ -75,6 +70,7 @@ public class BilboTranslator {
     }
 
     private void generateInstanceIf(InstanceOfBlock block, int i) {
+        code.append("\n");
         if (block.getInstanceType() != null){
             code.append("if ( ");
             code.append(b.getInput().getName());

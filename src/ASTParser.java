@@ -1,17 +1,15 @@
 
 
-import java.io.InvalidClassException;
-import java.util.ArrayList;
-import java.util.List;
-
 import ast.*;
-import ast.Arg;
-import codeGenInput.*;
-import com.sun.javaws.exceptions.InvalidArgumentException;
+import codeGenInput.InstanceOfBlock;
+import codeGenInput.Source;
 import implementations.ArgImpl;
 import implementations.BilboImpl;
 import implementations.InstanceOfBlockImpl;
 import implementations.JavaOutSideBlockImpl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by vootele on 5/23/14.
@@ -31,7 +29,7 @@ public class ASTParser {
     private static Source parseBilboOrOutsideJava(BilboAST s) throws Exception {
         if (s instanceof OutsideJava){
             OutsideJava o = (OutsideJava) s;
-            return new JavaOutSideBlockImpl(o.getValue());
+            return (Source) new JavaOutSideBlockImpl(o.getValue());
         }
         else if (s instanceof BilboBlock){
             BilboBlock b = (BilboBlock) s;
@@ -40,7 +38,7 @@ public class ASTParser {
                 blocks.add(parseLine(l));
             }
             codeGenInput.Input input = new implementations.InputImpl(b.getInput().getType(),b.getInput().getName());
-            return new BilboImpl(b.getVisibility(),b.isStatic(),b.getType(),b.getName(),input,blocks);
+            return (Source) new BilboImpl(b.getVisibility(),b.isStatic(),b.getType(),b.getName(),input,blocks);
         }
         throw new Exception("Invalid argument class");
     }
