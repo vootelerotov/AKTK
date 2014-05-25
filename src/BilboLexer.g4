@@ -55,7 +55,7 @@ Visibility
     ;
 
 TypeName
-    :   [A-Z][a-z0-9_]*
+    :   [A-Z][A-Za-z0-9_\.]*
     ;
 
 Bottom

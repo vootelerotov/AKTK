@@ -65,7 +65,9 @@ public class BilboTranslator {
     }
 
     private void assignArgumentToClassField() {
-        code.append("this.");
+        code.append("Bilbo");
+        code.append(number);
+        code.append(".");
         code.append(b.getInput().getName());
         code.append("=");
         code.append(b.getInput().getName());
@@ -85,7 +87,7 @@ public class BilboTranslator {
             code.append(")");
         }
         code.append("{\n");
-        code.append("method");
+        code.append("return method");
         code.append(i);
         code.append("( ");
         for (Arg arg : block.getArgs()){
@@ -93,7 +95,7 @@ public class BilboTranslator {
         }
         code.setLength(code.length() -1); //last comma;
         code.append(" );");
-        code.append("}");
+        code.append("}\n");
 
     }
 
@@ -165,7 +167,7 @@ public class BilboTranslator {
         code.append("private static ");
         code.append(b.getInput().getType());
         code.append(" ");
-        code.append(b.getName());
+        code.append(b.getInput().getName());
         code.append("; \n");
     }
 
@@ -188,13 +190,13 @@ public class BilboTranslator {
         code.append(" ");
         code.append(b.getInput().getName());
         code.append(" ) {\n");
-        code.append("Bilbo");
+        code.append("return Bilbo");
         code.append(number);
         code.append(".");
         code.append(b.getName());
         code.append("(");
         code.append(b.getInput().getName());
-        code.append(");");
+        code.append(");\n");
         code.append("}");
     }
 
